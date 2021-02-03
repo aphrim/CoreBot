@@ -1,0 +1,6 @@
+# macOS internals
+.DS_Store
+
+# npm
+/node_modules
+/npm-debug.log*

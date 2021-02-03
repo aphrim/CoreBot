@@ -1,0 +1,23 @@
+{
+  "name": "corebot",
+  "version": "1.0.0",
+  "description": "An open source Discord bot that interacts with the Core API.",
+  "main": "bot.js",
+  "author": "Aphrim",
+  "license": "Apache License 2.0",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "discord.js": "^12.5.1",
+    "edit": "^1.0.2",
+    "edit-json-file": "^1.5.0",
+    "file": "^0.2.2",
+    "json": "^10.0.0",
+    "save": "^2.4.0"
+  },
+  "engines": {
+    "node": ">= 12"
+  }
+}
