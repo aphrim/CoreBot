@@ -4,6 +4,7 @@ const https = require('https')
 
 function getgame(message) {
     let arg = message.content.slice(9)
+    console.log(message.author.username + ' is using get game ' + arg + ' in server ' + message.guild.name)
     axios
     .post('https://www.coregames.com/api/search', {
         name: arg
@@ -51,6 +52,7 @@ function getgame(message) {
     })
     .catch(error => {
         console.error(error)
+        message.channel.send('hmm there was an error')
     })
 }
 

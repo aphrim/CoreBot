@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 const featuredurl = 'https://www.coregames.com/api/game/featured';
 
 function getfeatured(message) {
+    console.log(message.author.username + ' is using get Featured in server ' + message.guild.name)
     let pagenum = message.content.split(' ')[1]
         if (!pagenum) {
             pagenum = 1

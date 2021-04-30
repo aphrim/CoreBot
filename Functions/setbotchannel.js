@@ -23,7 +23,6 @@ function setbotChannel(message) {
         "commandChannel": message.mentions.channels.first().id
     }
 
-    console.log(obj)
     file.set(message.guild.id, obj)
     file.save();
 

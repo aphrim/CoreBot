@@ -8,6 +8,7 @@ function getCC(message) {
     let authToken = generateauthToken.getAuthToken()
     let arg = message.content.slice(7)
     let url = ('https://www.coregames.com/api/Template/search_v2?searchTerm=' + arg)
+    console.log(message.author.username + ' is using get CC ' + arg + ' in server ' + message.guild.name)
     axios
     .post(url, {
         'continuationToken': '',
@@ -37,7 +38,6 @@ function getCC(message) {
                 data += chunk
             })
             resp.on('end', () => {
-                console.log(JSON.parse(data))
                 let description = (JSON.parse(data).template.description)
 
                 if (description.length > 200) {
@@ -54,7 +54,8 @@ function getCC(message) {
     })
 
     .catch(err => {
-
+        generateAuthToken.generateAuthToken()
+        message.channel.send('Hmm there was an error.')
     })
 }
 

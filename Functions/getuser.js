@@ -4,22 +4,18 @@ const fs = require('fs')
 const generateAuthToken = require('./generateauthToken')
 
 function getuser(message) {
-    let jsonString
     let authToken = generateAuthToken.getAuthToken()
-    console.log ('getuser')
-    console.log(jsonString)
     let arg = message.content.slice(9)
+    console.log(message.author.username + ' is using get user ' + arg + ' in server ' + message.guild.name)
     axios
     .post('https://www.coregames.com/api/search', {
         name: arg
     })
     .then(res => {
-        console.log(res.data.profiles[0])
         if (res.data.profiles[0]) {
             let url = ('https://www.coregames.com/users/' + res.data.profiles[0].id)
             let pfpUrl = ('https://www.coregames.com/api/profilepictures/' + res.data.profiles[0].profilePictureId)
             let getgamesurl = ('https://www.coregames.com/api/game/ownedby/' + res.data.profiles[0].id)
-            console.log(res.data.profiles[1])
             let totalplays = 0
             let totalgames = 0
             axios
@@ -27,7 +23,6 @@ function getuser(message) {
             })
             .then(resNew => {
                 resNew.data.games.forEach(game =>{
-                    console.log(game.plays)
                     totalplays += game.plays
                     totalgames++
                 })
@@ -58,6 +53,7 @@ function getuser(message) {
                 .addField(`Total Plays on ${res.data.profiles[0].userName}'s games`, totalplaysstr, true)
                 .addField('Level', res.data.profiles[0].questLevel, true)
                 .addField('Total Published Games', totalgames)
+                .addField('Date Account Created', res.data.profiles[0].createdAtDate.substring(0,10))
                 .setURL(url)
                 ;
                 axios
@@ -84,6 +80,8 @@ function getuser(message) {
             })
             .catch(err => {
                 console.log(err)
+                generateAuthToken.generateAuthToken()
+                message.channel.send('Hmm there was an error.')
             }) 
         } else {
             let embed = new Discord.MessageEmbed()
@@ -94,6 +92,8 @@ function getuser(message) {
     })
     .catch(error => {
         console.error(error)
+        generateAuthToken.generateAuthToken()
+        message.channel.send('Hmm there was an error.')
     })
 }
 

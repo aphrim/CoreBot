@@ -10,6 +10,7 @@ function gettop(message) {
     if (!pagenum) {
         pagenum = 1
     }
+    console.log(message.author.username + ' is using get top in server ' + message.guild.name)
     axios
 
     .post(topurl, {
@@ -34,6 +35,7 @@ function gettop(message) {
     })
     .catch(error => {
         console.error(error)
+        message.channel.send('There was an error')
     })
 }
 

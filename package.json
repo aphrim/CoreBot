@@ -1,23 +1,18 @@
 {
-  "name": "corebot",
+  "name": "example-app",
   "version": "1.0.0",
-  "description": "An open source Discord bot that interacts with the Core API.",
+  "description": "An example application - make sure to configure this yourself.",
   "main": "bot.js",
-  "author": "Aphrim",
-  "license": "Apache License 2.0",
   "scripts": {
-    "start": "node bot.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "Pebblehost",
+  "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
     "discord.js": "^12.5.1",
-    "edit": "^1.0.2",
     "edit-json-file": "^1.5.0",
-    "file": "^0.2.2",
-    "json": "^10.0.0",
-    "save": "^2.4.0"
+    "forever": "^3.0.4"
   },
-  "engines": {
-    "node": ">= 12"
-  }
+  "nodeVersion": "12.16.3"
 }

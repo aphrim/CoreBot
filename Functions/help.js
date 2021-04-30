@@ -12,9 +12,9 @@ function help (message) {
     Embed.addField('!setchannel', '!setchannel (channel). Sets the channel to be only place where commands can be used. {Server Owner Only}. Clear with !clearchannel ', false)
     Embed.setColor('#fffff')
     message.author.send(Embed)
-
+    
     let embed = new Discord.MessageEmbed()
-    embed.setTitle(`The list of commands has been sent to ${message.author.username}'s DMs`)
+    embed.setTitle(`The list of commands has been sent to ${message.author.username}'s DMs. If you don't recieve it, try enabling DMs`)
     embed.setColor('#fffff')
     message.channel.send(embed)
 }

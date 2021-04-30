@@ -9,6 +9,7 @@ function getactive(message) {
     if (!pagenum) {
         pagenum = 1
     }
+    console.log(message.author.username + ' is using get Active in server ' + message.guild.name)
     axios
 
     .post(activeurl, {
@@ -33,6 +34,7 @@ function getactive(message) {
     })
     .catch(error => {
         console.error(error)
+        message.channel.send('Hmm there was an error.')
     })
 
 }

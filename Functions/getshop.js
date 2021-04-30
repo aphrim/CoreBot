@@ -7,11 +7,11 @@ const shoppageurl = 'https://www.coregames.com/api/Store/pages/'
 
 
 function getshop(message) {
+    console.log(message.author.username + ' is using get shop ' + message + ' in server ' + message.guild.name)
     let pagenum = message.content.split(' ')[1]
         if (!pagenum) {
             pagenum = 0
         }
-        console.log ('pagenum is ' + pagenum)
 
         https.get(shopurl, (resp) => {
         let data = '';
@@ -38,7 +38,6 @@ function getshop(message) {
                     let landingPage = JSON.parse(data).landingPage
                     if (message.content.split(' ')[2]){
                         let pageNumNum = message.content.split(' ')[2]
-                        console.log(landingPage.bundles[parseInt(pageNumNum) - 1])
                         let Embed = new Discord.MessageEmbed()
                         Embed.setColor('#FFFFF')
                         Embed.setTitle(landingPage.bundles[parseInt(pageNumNum) - 1].name)
@@ -49,7 +48,6 @@ function getshop(message) {
                         let pageID = JSON.parse(data).pageSummaries[pagenum -  1].pageId
                         if (!message.content.split(' ')[2]) {
                             let pageurl = shoppageurl + pageID
-                            console.log(pageurl)
                             https.get(pageurl, (resp) => {
                                 let dataNew = '';
                                 resp.on('data', (chunk) => {
