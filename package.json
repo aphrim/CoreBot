@@ -1,13 +1,11 @@
 {
-  "name": "example-app",
+  "name": "Core Bot",
   "version": "1.0.0",
-  "description": "An example application - make sure to configure this yourself.",
+  "description": "Core Bot",
   "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node bot.js"
   },
-  "author": "Pebblehost",
-  "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
     "discord.js": "^12.5.1",
